@@ -1,5 +1,5 @@
 
-import {  useEffect, useState } from 'react'
+import React, {  useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import './App.css'
 import authService from "./appwrite/auth"
@@ -35,7 +35,7 @@ return !loading ? (
       <Footer/>
     </div>
   </div>      
-) : null
+) :null
 }
 
 export default App

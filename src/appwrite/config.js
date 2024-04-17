@@ -86,7 +86,7 @@ export class Service {
         queries
       );
     } catch (error) {
-      console.log("Appwrite :: listPost :: Error".error);
+      console.log("Appwrite :: listPost :: Error",error);
       return false;
     }
   }

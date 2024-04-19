@@ -19,7 +19,7 @@ export class Service {
       return await this.databases.createDocument(
         conf.appwriteDatabaseId,
         conf.appwriteCollectionId,
-        slug,
+        ID.unique(),
         {
           title,
           content,
@@ -70,7 +70,7 @@ export class Service {
       return await this.databases.getDocuments(
         conf.appwriteDatabaseId,
         conf.appwriteCollectionId,
-        slug
+        ID.unique()
       );
     } catch (error) {
       console.log("Appwrite Service :: getPost :: Error", error);
@@ -78,12 +78,12 @@ export class Service {
     }
   }
 
-  async getPosts(queries = [Query.equal("status", "active")]) {
+  async getPosts() {
     try {
       return await this.databases.listDocuments(
         conf.appwriteDatabaseId,
         conf.appwriteCollectionId,
-        queries
+        [Query.equal("status", "active")]
       );
     } catch (error) {
       console.log("Appwrite :: listPost :: Error",error);

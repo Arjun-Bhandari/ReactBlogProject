@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { login as authLogin } from "../store/authslice";
 import { Button, Input, Logo } from "./index";
 import { useDispatch } from "react-redux";
-import authService from "../appwrite/auth";
+import authService from "../appwrite/auth.js";
 import { useForm } from "react-hook-form";
 
 function Login() {
@@ -16,6 +16,7 @@ function Login() {
     setError("");
     try {
       const session = await authService.login(data);
+      console.log(session)
       if (session) {
         const userData = await authService.getCurrentUser();
         console.log(userData)

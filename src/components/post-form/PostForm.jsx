@@ -1,12 +1,12 @@
 import React, { useCallback } from "react";
-import { useForm } from "react-hook-form";
+import { useForm  } from "react-hook-form";
 import { Button, Input, Select, RTE } from "../index";
 import appwriteService from "../../appwrite/config";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 function PostForm({ post }) {
-  const { register, handelSubmit, watch, setValue, control, getValues } =
+  const { register, handleSubmit, watch, setValue, control, getValues } =
     useForm({
       defalultValues: {
         title: post?.title || "",
@@ -17,7 +17,7 @@ function PostForm({ post }) {
     });
 
   const navigate = useNavigate();
-  const userData = useSelector((state) => state.user.userData);
+  const userData = useSelector((state) => state.auth.userData);
 
   const submit = async (data) => {
     if (post) {
@@ -39,10 +39,10 @@ function PostForm({ post }) {
       const file = await appwriteService.uploadFile(data.image[0]);
       if (file) {
         const fileId = file.$id;
-        data.featuredImage = fileId;
+        data.featuredimage = fileId;
         const dbPost = await appwriteService.createPost({
           ...data,
-          userId: userData.$id,
+          userId: userData.$id
         });
         if (dbPost) {
           navigate(`/post/${dbPost.$id}`);
@@ -73,12 +73,12 @@ function PostForm({ post }) {
   }, [watch, slugTransform, setValue]);
 
   return (
-    <form onSubmit={handelSubmit(submit)} className="flex flex-wrap">
+    <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
       <div className="w-2/3 px-2">
         <Input
           label="Title:"
           placeholder="Title"
-          className="mb-4"
+          className="mb-4 "
           {...register("title", { required: true })}
         />
 
@@ -138,3 +138,6 @@ function PostForm({ post }) {
   );
 }
 export default PostForm;
+
+
+

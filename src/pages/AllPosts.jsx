@@ -4,7 +4,7 @@ import {Container, PostCard} from "../components/index"
 
  function AllPosts() {
     const [posts , setPosts] = useState ([])
-
+    console.log(posts);
     useEffect(()=>{},[])
 
     appwriteService.getPosts([]).then((posts)=>{
@@ -19,7 +19,7 @@ import {Container, PostCard} from "../components/index"
 <Container>
     {posts.map((post)=>(
         <div key={post.$id} className='p-2 w-1/4'>
-            <PostCard/>
+            <PostCard {...post} />
         </div>
     ))}
 </Container>

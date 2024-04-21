@@ -53,23 +53,25 @@
 import { useEffect, useState } from 'react'
 import appwriteService from "../appwrite/config";
 import { Container, PostCard } from '../components'
-import { useSelector } from 'react-redux';
+import { useSelector ,useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import {getPosts as getPostsSlice} from "../store/postSlice"
 
 function Home() {
-    const [posts, setPosts] = useState([])
+   
+    const dispatch = useDispatch();
 
     const userAuth = useSelector((state) => state.auth)
-    // console.log('userAuth: (in /pages/Home.jsx) ', userAuth)
+    const posts = useSelector((state) => state.posts.posts);
     const navigate = useNavigate()
 
     useEffect(() => {
         if (userAuth.status === true) {
-            // console.log('executed')
             appwriteService.getPosts([]).then((posts) => {
                 if (posts) {
-                    setPosts(posts.documents)
+                    dispatch(getPostsSlice({ posts: posts.documents }));
+
                 }
             })
         } else navigate('/')

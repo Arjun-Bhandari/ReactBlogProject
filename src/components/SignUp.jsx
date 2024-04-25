@@ -28,11 +28,11 @@ function SignUp() {
   return (
     <div className="flex items-center justify-center">
       <div
-        className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}
+        className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10 bg-slate-400`}
       >
         <div className="mb-2 flex justify-center ">
-          <span className="inline-block w-full max-w-[100px">
-            <Logo width="100%" />
+          <span className="flex w-full max-w[100px] justify-center">
+            <Logo width="50%" />
           </span>
         </div>
         <h2 className="text-center text-2xl font-bold leading-tight">
@@ -53,7 +53,6 @@ function SignUp() {
         <form onSubmit={handleSubmit(create)}>
           <div className="space-y-5">
             <Input
-            className='w-full'
               label="Full Name"
               placeholder="Enter Your full Name"
               {...register("name", {
@@ -61,7 +60,6 @@ function SignUp() {
               })}
             />
             <Input
-            className="w-full"
               label="Email:"
               placeholder="Enter your email"
               type="email"
@@ -75,7 +73,6 @@ function SignUp() {
               })}
             />
             <Input
-            className='w-full'
               label="Password:"
               type="password"
               placeholder="Enter Your Password"

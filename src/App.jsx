@@ -25,7 +25,7 @@ useEffect(()=>{
 },[])
 
 return !loading ? (
-  <div className='min-h-screen flex flex-wrap content-between bg-gray-400'>
+  <div className='min-h-screen flex flex-wrap content-between h-14 bg-gradient-to-r from-violet-500 to-fuchsia-500'>
     <div className='w-full block'>
 
       <Header/>

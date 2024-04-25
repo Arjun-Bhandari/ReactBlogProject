@@ -36,7 +36,7 @@ function Home() {
                 <Container>
                     <div className="flex flex-wrap">
                         <div className="p-2 w-full">
-                            <h1 className="text-2xl font-bold hover:text-gray-500">
+                            <h1 className="text-2xl font-bold hover:text-gray-500 text-neutral-50">
                                 Welcome to Dashboard. Create a Post to get started
                               <p><Link to ={"/add-post"} >Create Your own Post</Link></p>
                             </h1>
@@ -52,7 +52,7 @@ function Home() {
                 <Container>
                     <div className="flex flex-wrap">
                         <div className="p-2 w-full">
-                            <h1 className="text-2xl font-bold hover:text-gray-500">
+                            <h1 className="text-2xl font-bold hover:text-gray-500 text-neutral-50">
                                 Welcome. Login to get started
                             </h1>
                         </div>

@@ -40,33 +40,33 @@ function Header() {
   return (
     <header className="py-3 shadow ">
       <Container>
-        <nav className="flex">
-          <div className="mr-4">
-            <Link to="/">
-              <Logo/>
-            </Link>
-          </div>
-          <ul className="flex ml-auto">
-            {navItems.map((item) =>
-              item.active ? (
-                <li key={item.name}>
-                  <button
-                    onClick={() => navigate(item.slug)}
-                    className="inline-block px-4 py-2 duration-200 hover:bg-gray-400 rounded-full text-neutral-50"
-                  >
-                    {item.name}
-                  </button>
-                </li>
-              ) : null
-            )}
+      <nav className="flex justify-between">
+  <div className="w-1/3">
+    <Link to="/">
+      <Logo/>
+    </Link>
+  </div>
+  <ul className="flex ">
+    {navItems.map((item) =>
+      item.active ? (
+        <li key={item.name}>
+          <button
+            onClick={() => navigate(item.slug)}
+            className="inline-block px-4 py-2 duration-200 hover:bg-gray-400 rounded-full text-neutral-50"
+          >
+            {item.name}
+          </button>
+        </li>
+      ) : null
+    )}
+    {authStatus && (
+      <li>
+        <LogoutBtn/>
+      </li>
+    )}
+  </ul>
+</nav>
 
-            {authStatus && (
-                <li>
-                    <LogoutBtn/>
-                </li>
-            )}
-          </ul>
-        </nav>
       </Container>
     </header>
   );

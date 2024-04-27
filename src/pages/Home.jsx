@@ -86,12 +86,16 @@ function Home() {
   return (
     <div className="w-full py-8">
       <Container>
-        <div className="flex flex-wrap">
-          {posts.map((post) => (
+        <div className="flex">
+          {posts.slice(0,8).map((post) => (
             <div key={post.$id} className="p-2 w-1/4">
               <PostCard {...post} />
             </div>
           ))}
+         
+        </div>
+        <div className="flex flex-wrap justify-center  text-neutral-50">
+          <Link to = {"/all-posts"}><button className="border py-1 px-3 mt-4 rounded">View All Posts</button></Link>
         </div>
       </Container>
     </div>

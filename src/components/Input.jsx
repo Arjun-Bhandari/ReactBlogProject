@@ -9,7 +9,7 @@ const Input = React.forwardRef(function Input(
     <div className="w-full flex flex-col">
       <div className="flex items-start">
       {label && (
-        <label className="mb-1 pl-1" htmlFor={id}>
+        <label className="mb-1 pl-1 text-neutral-50" htmlFor={id}>
           {label}
         </label>
       )}

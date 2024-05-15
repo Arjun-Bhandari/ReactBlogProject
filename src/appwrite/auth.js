@@ -39,22 +39,22 @@ export class AuthService {
     }
   }
 
-  // async googleAuth() {
-  //   try {
-  //     const res =  this.account.createOAuth2Session(
-  //       "google",
-  //       "http://localhost:5173/",
-  //       "http://localhost:5173/login",
+  async googleAuth() {
+    try {
+      const res =  this.account.createOAuth2Session(
+        OAuthProvider.Google,
+        "http://localhost:5173",
+        "http://localhost:5173/login",
         
-  //     );
-  //     console.log(res);
-  //     return res;
-  //   } catch (err) {
-  //     console.log(" Auth service :: GoogleAuthError :: error", err);
-  //     console.error("Error details:", err.message, err.stack);
-  //     throw err;
-  //   }
-  // }
+      );
+      console.log(res);
+      return res;
+    } catch (err) {
+      console.log(" Auth service :: GoogleAuthError :: error", err);
+      console.error("Error details:", err.message, err.stack);
+      throw err;
+    }
+  }
   async getCurrentUser() {
     try {
       return await this.account.get();

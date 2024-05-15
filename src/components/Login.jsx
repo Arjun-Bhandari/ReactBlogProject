@@ -26,17 +26,21 @@ function Login() {
         }
     }
 
-    const  signInWithGoogle = async()=>{
+    const  signInWithGoogle = async(e)=>{
+      e.preventDefault();
       setError("");
       try{
       const data = await authService.googleAuth()
         console.log(data);
+        if(data){
+          const userData = await authService.getCurrentUser()
+          if(userData) dispatch(authLogin(userData));
+        }
       }catch(error){
         setError("Google Authentication Fail",error.message);
         console.log("Google Authentication Fail",error)
         throw error
       }
-      
     }
   return (
     <div className='py-8'>
@@ -84,9 +88,9 @@ function Login() {
                 type="submit"
                 className="w-full"
                 >Sign in</Button>
-                {/* <button 
+                <button 
                 onClick={signInWithGoogle}
-                className='border px-2 py-1 mt-4 '> Sign In With Google</button> */}
+                className='border px-2 py-1 mt-4 '> Sign In With Google</button>
             </div>
         </form>
         </div>
